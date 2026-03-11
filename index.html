@@ -120,10 +120,10 @@
 <nav id="nav">
   <a class="nav-logo" href="index.html">NET<span>INIMA</span></a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="#section-films">Films</a></li>
-    <li><a href="#section-series">Series</a></li>
-    <li><a href="#all-shows">All Shows</a></li>
+    <li><a href="#" onclick="navHome(event)">Home</a></li>
+    <li><a href="#" onclick="navFilter('__films',event)">Films</a></li>
+    <li><a href="#" onclick="navFilter('All',event)">Shows</a></li>
+    <li><a href="#" onclick="navFilter('SMP',event)">SMP</a></li>
   </ul>
   <div class="nav-right">
     <input class="nav-search" id="nav-search-input" type="text" placeholder="Search shows…"
@@ -271,14 +271,15 @@ function buildCategories(shows) {
   const bar = document.getElementById('cat-bar');
   bar.style.display = 'flex';
   bar.innerHTML = `
-    <button class="cat-pill active" onclick="filterGenre('All',this)">All</button>
-    <button class="cat-pill type-film" onclick="filterGenre('__films',this)">🎬 Films</button>
-    <button class="cat-pill type-series" onclick="filterGenre('__series',this)">📺 Series</button>`;
+    <button class="cat-pill active" data-filter="All" onclick="filterGenre('All',this)">All</button>
+    <button class="cat-pill type-film" data-filter="__films" onclick="filterGenre('__films',this)">🎬 Films</button>
+    <button class="cat-pill type-series" data-filter="__series" onclick="filterGenre('__series',this)">📺 Series</button>`;
   const genres = new Set(shows.flatMap(s=>s.genres||[]));
   genres.forEach(g => {
     const btn = document.createElement('button');
     btn.className = 'cat-pill';
     btn.textContent = g;
+    btn.dataset.filter = g;
     btn.onclick = ()=>filterGenre(g,btn);
     bar.appendChild(btn);
   });
@@ -317,14 +318,33 @@ function buildGrid(shows, isSearch=false) {
 }
 
 function filterGenre(filter, btn) {
+  // clear any active pill
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
+
+  // clear nav link highlight and optionally re-highlight if this filter matches a nav item
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const navLink = [...document.querySelectorAll('.nav-links a')].find(a=>a.getAttribute('onclick')?.includes(`'${filter}'`));
+  if (navLink) navLink.classList.add('active');
+
+  // if caller didn't supply a button, try to look one up by data-filter
+  if (!btn) {
+    btn = document.querySelector(`.cat-pill[data-filter="${filter}"]`);
+  }
+  if (btn) btn.classList.add('active');
+
   let r;
   if (filter==='All')        r = SHOW_REGISTRY;
   else if (filter==='__films')   r = SHOW_REGISTRY.filter(s=>s.type==='Film'||s.type==='Short');
   else if (filter==='__series')  r = SHOW_REGISTRY.filter(s=>s.type==='Series');
   else r = SHOW_REGISTRY.filter(s=>(s.genres||[]).includes(filter));
   buildGrid(r);
+
+  // update URL to reflect current genre filter (remove search term)
+  const url = new URL(window.location);
+  if (filter && filter !== 'All') url.searchParams.set('genre', filter);
+  else url.searchParams.delete('genre');
+  url.searchParams.delete('q');
+  window.history.replaceState({},'',url);
 }
 
 function onSearchInput(input) {
@@ -342,8 +362,11 @@ function filterShows(q) {
   );
   if (q) document.getElementById('grid-title').innerHTML=`Search: "<span style="color:var(--green)">${q}</span>" <span style="font-size:.8rem;color:var(--muted);font-family:var(--fm)">(${results.length} found)</span>`;
   buildGrid(results, q!=='');
+
   const url = new URL(window.location);
   if (q) url.searchParams.set('q',q); else url.searchParams.delete('q');
+  // clear any genre filter when performing a text search
+  if (q) url.searchParams.delete('genre');
   window.history.replaceState({},'',url);
 }
 
@@ -352,7 +375,10 @@ function clearSearch(e) {
   const inp = document.getElementById('nav-search-input');
   inp.value=''; inp.classList.remove('has-value');
   filterShows('');
-  window.history.replaceState({},'',window.location.pathname);
+  // preserve any existing genre filter when clearing search
+  const url = new URL(window.location);
+  url.searchParams.delete('q');
+  window.history.replaceState({},'',url);
 }
 
 (function init(){
@@ -365,11 +391,49 @@ function clearSearch(e) {
   buildGrid(shows);
   const yr = shows.length ? Math.max(...shows.map(s=>parseInt(s.year)||2026)) : new Date().getFullYear();
   document.getElementById('footer-copy').textContent=`© ${yr} Netinima · Not affiliated with Mojang or Microsoft`;
-  const q = new URLSearchParams(window.location.search).get('q');
-  if(q){ const inp=document.getElementById('nav-search-input'); inp.value=q; inp.classList.add('has-value'); filterShows(q); setTimeout(()=>document.getElementById('all-shows').scrollIntoView({behavior:'smooth'}),300); }
+
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q');
+  const genre = params.get('genre');
+
+  if (genre) {
+    // apply genre filter if present (search takes precedence)
+    filterGenre(genre);
+    // highlight matching nav link if possible
+    const navLink = [...document.querySelectorAll('.nav-links a')].find(a=>a.getAttribute('onclick')?.includes(`'${genre}'`));
+    if (navLink) navLink.classList.add('active');
+    setTimeout(()=>document.getElementById('all-shows').scrollIntoView({behavior:'smooth'}),300);
+  }
+  if(q){ 
+    const inp=document.getElementById('nav-search-input'); inp.value=q; inp.classList.add('has-value'); filterShows(q);
+    setTimeout(()=>document.getElementById('all-shows').scrollIntoView({behavior:'smooth'}),300); 
+  }
 })();
 
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40));
+
+// navigation helpers
+function navFilter(filter, e) {
+  if (e) e.preventDefault();
+  // highlight the clicked link
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  if (e && e.currentTarget) e.currentTarget.classList.add('active');
+
+  const inp = document.getElementById('nav-search-input');
+  if (inp) { inp.value=''; inp.classList.remove('has-value'); }
+  filterGenre(filter);
+  const section = document.getElementById('all-shows');
+  if (section) section.scrollIntoView({behavior:'smooth'});
+}
+
+function navHome(e) {
+  if (e) e.preventDefault();
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const inp = document.getElementById('nav-search-input');
+  if (inp) { inp.value=''; inp.classList.remove('has-value'); }
+  filterGenre('All');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
 </script>
 </body>
 </html>

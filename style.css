@@ -54,6 +54,7 @@ nav.scrolled { background: rgba(10,10,10,.97); border-bottom: 1px solid var(--bo
   transition: color .2s; cursor: pointer;
 }
 .nav-links a:hover { color: var(--green); }
+.nav-links a.active { color: var(--green); }
 .nav-right { display: flex; align-items: center; gap: 14px; }
 .nav-search {
   background: transparent; border: none; border-bottom: 1px solid var(--muted);
