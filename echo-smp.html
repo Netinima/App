@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echo SMP — Netinima</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../show.css" />
+</head>
+<body class="page-enter">
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
+    <iframe id="lb-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" id="nav-search-input" type="text" placeholder="Search shows…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+<div class="show-hero">
+  <div class="show-hero-bg">
+    <img src="https://img.youtube.com/vi/IsKOKpHXz8E/maxresdefault.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" alt="Echo SMP" />
+    <div class="fallback-bg t-night" style="display:none;width:100%;height:100%"></div>
+  </div>
+  <div class="show-hero-overlay"></div>
+  <div class="show-hero-content">
+    <a class="show-back" href="../index.html">← Back to Netinima</a>
+    <div class="genre-row">
+      <span class="genre-tag">Adventure</span>
+      <span class="genre-tag">SMP</span>
+      <span class="genre-tag">Survival</span>
+    </div>
+    <h1 class="show-title">Echo SMP</h1>
+    <div class="show-meta">
+      <span class="stars">★★★★★</span>
+      <span class="dot"></span><span>9.0/10</span>
+      <span class="dot"></span><span>2025</span>
+      <span class="dot"></span><span>1 Season</span>
+      <span class="dot"></span><span>5 Episodes</span>
+    </div>
+    <p class="show-desc-short">nemonlad uncovers the truth on a hardcore SMP — and nothing is what it seems.</p>
+    <div class="show-btns">
+      <button class="btn btn-primary" onclick="playEp(1,0)">▶&nbsp; Play Episode 1</button>
+    </div>
+  </div>
+</div>
+<div class="show-body">
+  <div class="player-section">
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">S1 E1 — I Discovered The Truth On A Hardcore SMP</span></div>
+    <div class="player-wrap" id="player-wrap">
+      <div class="player-placeholder" onclick="playEp(1,0)">
+        <div class="big-play">▶</div>
+        <p>Click to play &nbsp;"I Discovered The Truth On A Hardcore SMP"</p>
+      </div>
+    </div>
+  </div>
+  <div class="show-layout">
+    <div>
+      <div class="gallery-section">
+        <h3>Screenshots</h3>
+        <div class="gallery">
+          <div class="gallery-img"><img src="https://img.youtube.com/vi/jIzkd9vXdr0/mqdefault.jpg" onerror="this.style.display='none'" alt="Ep 1" style="width:100%;height:100%;object-fit:cover;display:block" /><div class="gallery-img-lbl">Episode 1</div></div>
+          <div class="gallery-img"><img src="https://img.youtube.com/vi/sEVRmwFqgUs/mqdefault.jpg" onerror="this.style.display='none'" alt="Ep 2" style="width:100%;height:100%;object-fit:cover;display:block" /><div class="gallery-img-lbl">Episode 2</div></div>
+          <div class="gallery-img"><img src="https://img.youtube.com/vi/IsKOKpHXz8E/mqdefault.jpg" onerror="this.style.display='none'" alt="Ep 4" style="width:100%;height:100%;object-fit:cover;display:block" /><div class="gallery-img-lbl">Episode 4</div></div>
+          <div class="gallery-img"><img src="https://img.youtube.com/vi/KBFZ3WGNGwY/mqdefault.jpg" onerror="this.style.display='none'" alt="Ep 5" style="width:100%;height:100%;object-fit:cover;display:block" /><div class="gallery-img-lbl">Episode 5</div></div>
+        </div>
+      </div>
+      <div class="about-section">
+        <h3>About This Series</h3>
+        <div class="about-text">
+          <p>nemonlad joins a hardcore SMP and begins to uncover that the server holds deeper secrets than anyone expected. Each episode builds the mystery further.</p>
+          <p>A cinematic survival series blending genuine gameplay tension with a compelling narrative arc, culminating in the Pinch Empire saga.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ep-section">
+        <h3>Episodes</h3>
+        <div class="season-tabs">
+          <button class="season-tab active" onclick="switchSeason(1,this)">Season 1</button>
+        </div>
+        <div class="season-panel active" id="season-1">
+          <div class="ep-item ep-active" id="epi-1-0" onclick="playEp(1,0)"><span class="ep-num">01</span><div class="ep-info"><div class="ep-name">I Discovered The Truth On A Hardcore SMP</div><div class="ep-dur">15:30</div></div><div class="ep-play">▶</div></div>
+          <div class="ep-item" id="epi-1-1" onclick="playEp(1,1)"><span class="ep-num">02</span><div class="ep-info"><div class="ep-name">I Got Hunted In The Minecraft End</div><div class="ep-dur">35:15</div></div><div class="ep-play">▶</div></div>
+          <div class="ep-item" id="epi-1-2" onclick="playEp(1,2)"><span class="ep-num">03</span><div class="ep-info"><div class="ep-name">I Became Stronger On A Hardcore SMP</div><div class="ep-dur">23:43</div></div><div class="ep-play">▶</div></div>
+          <div class="ep-item" id="epi-1-3" onclick="playEp(1,3)"><span class="ep-num">04</span><div class="ep-info"><div class="ep-name">Minecraft Player VS Empire</div><div class="ep-dur">52:35</div></div><div class="ep-play">▶</div></div>
+          <div class="ep-item" id="epi-1-4" onclick="playEp(1,4)"><span class="ep-num">05</span><div class="ep-info"><div class="ep-name">Echoes SMP: The Pinch Empire</div><div class="ep-dur">41:19</div></div><div class="ep-play">▶</div></div>
+        </div>
+      </div>
+      <div class="sidebar-lbl">Series Info</div>
+      <table class="info-table">
+        <tr><td>Creator</td><td>nemonlad</td></tr>
+        <tr><td>Year</td><td>2025</td></tr>
+        <tr><td>Seasons</td><td>1 Season</td></tr>
+        <tr><td>Episodes</td><td>5 Episodes</td></tr>
+        <tr><td>Runtime</td><td>33 min avg</td></tr>
+        <tr><td>Rating</td><td><span style="color:var(--gold)">★★★★★</span> 9.0/10</td></tr>
+      </table>
+      <div class="sidebar-lbl">More Like This</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <a class="related-item" href="../shows/class-of-25.html">
+          <div class="related-thumb"><img src="https://img.youtube.com/vi/TA6L9-k7KHg/mqdefault.jpg" onerror="this.style.display='none'" alt="" /></div>
+          <div class="related-info"><div class="related-title">Class of '25</div><div class="related-meta">1 Season · ★★★★★</div></div>
+        </a>
+        <a class="related-item" href="../shows/dragon-egg.html">
+          <div class="related-thumb"><img src="https://img.youtube.com/vi/OG1c3D0N2WY/mqdefault.jpg" onerror="this.style.display='none'" alt="" /></div>
+          <div class="related-info"><div class="related-title">The Search for the Dragon Egg</div><div class="related-meta">Film · ★★★★★</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div><div class="footer-logo">NET<span>INIMA</span></div><p class="footer-tagline">The premier destination for Minecraft machinima.</p></div>
+  <div class="footer-col"><h4>Browse</h4><a href="../index.html">Home</a><a href="#">All Series</a></div>
+  <div class="footer-col"><h4>Community</h4><a href="https://forms.gle/u8sR4SW6UH8DXyA67" target="_blank" rel="noopener">Submit Your Machinima</a></div>
+  <div class="footer-bottom"><p>© 2025 Netinima · Not affiliated with Mojang or Microsoft</p><p>Built in the Overworld ⛏</p></div>
+</footer>
+<script>
+const EPISODES = {
+  1: [
+    {n:1,title:'I Discovered The Truth On A Hardcore SMP',dur:'15:30',yt:'jIzkd9vXdr0'},
+    {n:2,title:'I Got Hunted In The Minecraft End',       dur:'35:15',yt:'sEVRmwFqgUs'},
+    {n:3,title:'I Became Stronger On A Hardcore SMP',     dur:'23:43',yt:'6o23yiMnCmI'},
+    {n:4,title:'Minecraft Player VS Empire',              dur:'52:35',yt:'IsKOKpHXz8E'},
+    {n:5,title:'Echoes SMP: The Pinch Empire',            dur:'41:19',yt:'KBFZ3WGNGwY'},
+  ],
+};
+function switchSeason(season,btn){document.querySelectorAll('.season-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.season-panel').forEach(p=>p.classList.remove('active'));document.getElementById('season-'+season).classList.add('active');}
+function playEp(season,idx){const ep=EPISODES[season]&&EPISODES[season][idx];if(!ep)return;document.getElementById('player-wrap').innerHTML=`<iframe src="https://www.youtube.com/embed/${ep.yt}?autoplay=1&rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;document.getElementById('ep-name-lbl').textContent=`S${season} E${ep.n} — ${ep.title}`;document.querySelectorAll('.ep-item').forEach(el=>el.classList.remove('ep-active'));const a=document.getElementById(`epi-${season}-${idx}`);if(a)a.classList.add('ep-active');document.getElementById('player-wrap').scrollIntoView({behavior:'smooth',block:'center'});}
+function openLB(ytId){document.getElementById('lb-iframe').src=`https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;document.getElementById('lightbox').classList.add('lb-open');}
+function closeLB(e){if(e&&e.target!==e.currentTarget)return;document.getElementById('lightbox').classList.remove('lb-open');document.getElementById('lb-iframe').src='';}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40));
+</script>
+<script src="../search.js"></script>
+</body>
+</html>
