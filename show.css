@@ -39,7 +39,6 @@
   color: var(--muted); font-weight: 600; letter-spacing: .8px;
   margin-bottom: 16px; flex-wrap: wrap;
 }
-.show-meta .stars { color: var(--gold); }
 .show-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
 .show-desc-short { font-size: .92rem; color: #bbb; line-height: 1.7; margin-bottom: 24px; font-weight: 500; }
 .show-btns { display: flex; gap: 12px; flex-wrap: wrap; }

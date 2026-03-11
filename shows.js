@@ -17,9 +17,10 @@
 //    seasons   → 'Film' | 'Short' | '1 Season' | '2 Seasons' etc.
 //    episodes  → '4:22' (runtime for films) | '7 Episodes' (for series)
 //    runtime   → '4:22' | '11 min avg'
-//    views     → '12 views' | '1.5M views'
-//    stars     → '★★★★★'
-//    rating    → '9.0'
+//    (ratings and view counts are no longer shown on the site)
+//    views     → '12 views' | '1.5M views'   // kept for legacy / search if desired
+//    stars     → '★★★★★'                         // ignored in the UI
+//    rating    → '9.0'                           // ignored in the UI
 //    badge     → 'NEW' | 'HOT' | ''   (empty = no badge)
 //    genres    → array of strings  e.g. ['Action', 'Comedy']
 //    thumbYt   → YouTube video ID used for the card/hero thumbnail
