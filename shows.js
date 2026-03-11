@@ -7,6 +7,7 @@
 //  TO ADD A SHOW:    Copy one object below and fill it in.
 //  TO REMOVE A SHOW: Delete its object from the array.
 //  TO SET THE HERO:  Set  featured: true  on one show.
+//  To place a video on the SMP page, include 'SMP' in the genres array.
 //
 //  FIELDS:
 //    id        → unique slug, should match your filename (no .html)

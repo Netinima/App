@@ -8,8 +8,9 @@
 // ============================================================
 
 (function () {
-  // Detect whether we are on the homepage or a show page
-  const isHome = !!document.getElementById('search-input') && !!document.getElementById('grid-wrap');
+  // Determine current page type (set via data-page on body)
+  const page = document.body.dataset.page || 'home';
+  const isHome = page === 'home';
 
   function initSearch() {
     const input = document.getElementById('nav-search-input');
@@ -25,10 +26,10 @@
         if (q.length >= 2) {
           // Redirect after 600ms pause so fast typers don't get kicked immediately
           redirectTimer = setTimeout(() => {
-            // Work out the path depth to find index.html
             const depth = window.location.pathname.split('/').filter(Boolean).length;
             const base = depth <= 1 ? '' : '../'.repeat(depth - 1);
-            window.location.href = `${base}index.html?q=${encodeURIComponent(q)}`;
+            const target = page === 'home' ? 'index.html' : `${page}.html`;
+            window.location.href = `${base}${target}?q=${encodeURIComponent(q)}`;
           }, 600);
         }
       });
@@ -37,7 +38,8 @@
         if (e.key === 'Enter' && this.value.trim()) {
           const depth = window.location.pathname.split('/').filter(Boolean).length;
           const base = depth <= 1 ? '' : '../'.repeat(depth - 1);
-          window.location.href = `${base}index.html?q=${encodeURIComponent(this.value.trim())}`;
+          const target = page === 'home' ? 'index.html' : `${page}.html`;
+          window.location.href = `${base}${target}?q=${encodeURIComponent(this.value.trim())}`;
         }
         if (e.key === 'Escape') {
           this.value = '';

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Netinima – Minecraft Machinimas</title>
+  <title>Netinima – Films</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── HERO ── */
@@ -112,7 +112,7 @@
     .footer-bottom p { font-size:.7rem; color:#444; font-family:var(--fm); }
   </style>
 </head>
-<body class="page-enter" data-page="home">
+<body class="page-enter" data-page="films">
 
 <nav id="nav">
   <a class="nav-logo" href="index.html">NET<span>INIMA</span></a>
@@ -133,7 +133,7 @@
 
 <div id="hero-mount"></div>
 
-<!-- featured category teasers (only visible on home) -->
+<!-- featured category teasers -->
 <section class="section" id="featured-cats" style="display:none">
   <div class="section-header">
     <h2 class="section-title">Featured</h2>
@@ -175,9 +175,10 @@
   </div>
   <div class="footer-col">
     <h4>Browse</h4>
-    <a href="#section-films">Films</a>
-    <a href="#section-series">Series</a>
-    <a href="#all-shows">All Shows</a>
+    <a href="index.html">Home</a>
+    <a href="films.html">Films</a>
+    <a href="shows.html">Shows</a>
+    <a href="smp.html">SMP</a>
   </div>
   <div class="footer-col">
     <h4>Community</h4>
@@ -453,8 +454,6 @@ function buildCategoryHeroes(shows) {
     if (section) section.style.display = 'none';
     return;
   }
-  // show the section on home
-  if (section) section.style.display = 'flex';
   const container = document.getElementById('row-featured-cats');
   if (!container) return;
   container.innerHTML = '';
