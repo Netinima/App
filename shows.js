@@ -124,7 +124,7 @@ const SHOW_REGISTRY = [
     rating:   '9.0',
     badge:    '',
     genres:   ['Adventure', 'Fantasy'],
-    thumbYt:  'OG1c3D0N2WY',
+    thumbYt:  'UUv9GkEJpZI',
     heroDesc: "I don't really know",
     featured: false,
   },
