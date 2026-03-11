@@ -110,6 +110,25 @@ const SHOW_REGISTRY = [
     featured: false,
   },
 
+  {
+    id:       'MidgetAndGiant(OMGThereisMidgetinthis)-not-gonna-lie-just-want-to-see-URL-Limit-At-This-Point',
+    file:     'shows/MidgetAndGiant(OMGThereisMidgetinthis)-not-gonna-lie-just-want-to-see-URL-Limit-At-This-Point.html',
+    title:    'Midgets and Giants',
+    year:     '2015',
+    type:     'Film',
+    seasons:  'Film',
+    episodes: '9:24',
+    runtime:  '9:24',
+    views:    '30K views',
+    stars:    '★★★★',
+    rating:   '9.0',
+    badge:    '',
+    genres:   ['Action', 'Fantasy'],
+    thumbYt:  'OG1c3D0N2WY',
+    heroDesc: "I don't really know",
+    featured: false,
+  },
+
   // ── ADD YOUR NEXT SHOW BELOW ──
   // {
   //   id:       'your-show-id',
