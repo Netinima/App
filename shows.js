@@ -50,7 +50,7 @@ const SHOW_REGISTRY = [
     genres:   ['Action', 'Comedy'],
     thumbYt:  'jEGOMYHFFMw',
     heroDesc: 'Chapter Plus brings the Ghost Rider to Minecraft in this wild short film.',
-    featured: true,
+    featured: false,
   },
 
   {
@@ -127,6 +127,25 @@ const SHOW_REGISTRY = [
     thumbYt:  'UUv9GkEJpZI',
     heroDesc: "I don't really know",
     featured: false,
+  },
+
+  {
+    id:       'Void',
+    file:     'shows/Void.html',
+    title:    'V O I D',
+    year:     '2026',
+    type:     'Film',
+    seasons:  'Film',
+    episodes: '2:05:33',
+    runtime:  '2:05:33',
+    views:    '3K views',
+    stars:    '★★★★★',
+    rating:   '9.0',
+    badge:    'NEW',
+    genres:   ['Action', 'Adventure'],
+    thumbYt:  'gqpBDoXBAJ0',
+    heroDesc: 'I dont know',
+    featured: true,
   },
 
   // ── ADD YOUR NEXT SHOW BELOW ──
