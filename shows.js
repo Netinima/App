@@ -123,7 +123,7 @@ const SHOW_REGISTRY = [
     stars:    '★★★★',
     rating:   '9.0',
     badge:    '',
-    genres:   ['Action', 'Fantasy'],
+    genres:   ['Adventure', 'Fantasy'],
     thumbYt:  'OG1c3D0N2WY',
     heroDesc: "I don't really know",
     featured: false,
