@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V O I D — Netinima</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../show.css" />
+</head>
+<body class="page-enter">
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
+    <iframe id="lb-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" id="nav-search-input" type="text" placeholder="Search shows…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+<div class="show-hero">
+  <div class="show-hero-bg">
+    <img src="https://img.youtube.com/vi/gqpBDoXBAJ0/maxresdefault.jpg"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block'" alt="V O I D" />
+    <div class="fallback-bg t-desert" style="display:none;width:100%;height:100%"></div>
+  </div>
+  <div class="show-hero-overlay"></div>
+  <div class="show-hero-content">
+    <a class="show-back" href="../index.html">← Back to Netinima</a>
+    <div class="genre-row">
+      <span class="genre-tag">Action</span>
+      <span class="genre-tag">Adventure</span>
+    </div>
+    <h1 class="show-title">V O I D</h1>
+    <div class="show-meta">
+      <span class="stars">★★★★★</span>
+      <span class="dot"></span><span>9.0/10</span>
+      <span class="dot"></span><span>2026</span>
+      <span class="dot"></span><span>Film</span>
+      <span class="dot"></span><span>2:05:33</span>
+      <span class="dot"></span><span>3K</span>
+    </div>
+    <p class="show-desc-short">I haven't seen yet</p>
+    <div class="show-btns">
+      <button class="btn btn-primary" onclick="playFilm()">▶&nbsp; Watch Now</button>
+      <button class="btn btn-secondary" onclick="openLB('6Sb3zkdnjEk')">🎬&nbsp; Watch Trailer</button>
+    </div>
+  </div>
+</div>
+<div class="show-body">
+  <div class="player-section">
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">V O I D</span></div>
+    <div class="player-wrap" id="player-wrap">
+      <div class="player-placeholder" onclick="playFilm()">
+        <div class="big-play">▶</div>
+        <p>Click to watch &nbsp;"V O I D"</p>
+      </div>
+    </div>
+  </div>
+  <div class="show-layout">
+    <div>
+      <div class="trailer-section">
+        <h3>Official Trailer</h3>
+        <div class="trailer-wrap">
+          <div class="trailer-thumb" onclick="openLB('6Sb3zkdnjEk')">
+            <img src="https://img.youtube.com/vi/6Sb3zkdnjEk/mqdefault.jpg" onerror="this.style.display='none'" alt="Trailer" />
+            <div class="trailer-play">▶</div>
+            <div class="trailer-badge">▶ TRAILER</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-section">
+        <h3>Screenshots</h3>
+        <div class="gallery">
+          <div class="gallery-img">
+            <img src="https://img.youtube.com/vi/6Sb3zkdnjEk/mqdefault.jpg" onerror="this.style.display='none'" alt="Screenshot" style="width:100%;height:100%;object-fit:cover;display:block" />
+            <div class="gallery-img-lbl">trailer cover</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-section">
+        <h3>About This Film</h3>
+        <div class="about-text">
+          <p>Haven't seen yet</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ep-section">
+        <h3>Film</h3>
+        <div class="ep-list">
+          <div class="ep-item ep-active" onclick="playFilm()">
+            <span class="ep-num">▶</span>
+            <div class="ep-info">
+              <div class="ep-name">V O I D</div>
+              <div class="ep-dur">2:05:33</div>
+            </div>
+            <div class="ep-play">▶</div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-lbl">Film Info</div>
+      <table class="info-table">
+        <tr><td>Creator</td><td>Chipsy</td></tr>
+        <tr><td>Year</td><td>2026</td></tr>
+        <tr><td>Type</td><td>Film</td></tr>
+        <tr><td>Runtime</td><td>2:05:33</td></tr>
+        <tr><td>Rating</td><td><span style="color:var(--gold)">★★★★★</span> 9.0/10</td></tr>
+        <tr><td>Views</td><td><span style="color:var(--green)">3K</span></td></tr>
+      </table>
+      <div class="sidebar-lbl">More Like This</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <p style="font-size:.8rem;color:var(--muted);font-weight:600">More shows coming soon.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="../index.html">Home</a><a href="#">All Series</a><a href="#">Top Rated</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="https://forms.gle/u8sR4SW6UH8DXyA67" target="_blank" rel="noopener">Submit Your Machinima</a>
+    <a href="#">Discord Server</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+<script>
+const FILM_ID    = 'gqpBDoXBAJ0';
+const FILM_TITLE = 'V O I D';
+function playFilm() {
+  document.getElementById('player-wrap').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${FILM_ID}?autoplay=1&rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  document.getElementById('ep-name-lbl').textContent = FILM_TITLE;
+  document.getElementById('player-wrap').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function openLB(ytId) {
+  document.getElementById('lb-iframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+  document.getElementById('lightbox').classList.add('lb-open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.getElementById('lb-iframe').src = '';
+}
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40));
+</script>
+<script src="../search.js"></script>
+</body>
+</html>
