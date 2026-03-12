@@ -100,25 +100,13 @@
   </ul>
   <div class="nav-right">
     <input class="nav-search" id="nav-search-input" type="text" placeholder="Search shows…"
-      oninput="onSearchInput(this)"
-      onkeydown="if(event.key==='Escape')clearSearch(event)" />
+      oninput="if(this.value.trim())window.location='shows.html?q='+encodeURIComponent(this.value.trim())"
+      onkeydown="if(event.key==='Enter'&&this.value.trim())window.location='shows.html?q='+encodeURIComponent(this.value.trim())" />
     <div class="nav-avatar">🎮</div>
   </div>
 </nav>
 
 <div id="hero-mount"></div>
-
-<!-- Home: one card teaser per category (links to films/shows/smp pages) -->
-<section class="section" id="featured-cats" style="display:none">
-  <div class="section-header">
-    <h2 class="section-title">Browse By Category</h2>
-  </div>
-  <div class="card-row" id="row-featured-cats"></div>
-</section>
-
-<div class="ticker-wrap" id="ticker-wrap" style="display:none"><div class="ticker" id="ticker-inner"></div></div>
-<div class="stats-bar"  id="stats-bar"  style="display:none"></div>
-<div class="categories" id="cat-bar"    style="display:none"></div>
 
 <!-- Home: horizontal preview rows per category -->
 <section class="section" id="section-films" style="display:none">
@@ -146,14 +134,6 @@
     <a href="smp.html" style="margin-left:auto;font-family:var(--fm);font-size:.6rem;color:var(--muted);letter-spacing:2px;text-decoration:none">See All →</a>
   </div>
   <div class="card-row" id="row-smp"></div>
-</section>
-
-<section class="section" id="all-shows">
-  <div class="section-header" style="justify-content:space-between;align-items:center">
-    <h2 class="section-title" id="grid-title">All Shows</h2>
-    <button class="search-back" id="search-back" onclick="clearSearch(event)">✕ Clear Search</button>
-  </div>
-  <div id="grid-wrap"></div>
 </section>
 
 <footer>
@@ -445,22 +425,11 @@ function markActiveNav() {
   buildFeaturedSection();
   if (PAGE_SHOWS.length >= 2) buildTicker(PAGE_SHOWS);
   buildStats(PAGE_SHOWS);
-  buildCategories(PAGE_SHOWS);
   buildHomeRows(PAGE_SHOWS);
-  buildGrid(PAGE_SHOWS);
+  // No grid or search restore on home — search redirects to index with ?q=
 
   const yr = PAGE_SHOWS.length ? Math.max(...PAGE_SHOWS.map(s=>parseInt(s.year)||2026)) : new Date().getFullYear();
   document.getElementById('footer-copy').textContent = `© ${yr} Netinima · Not affiliated with Mojang or Microsoft`;
-
-  const params = new URLSearchParams(window.location.search);
-  const q     = params.get('q');
-  const genre = params.get('genre');
-  if (genre) { filterCat(genre); setTimeout(()=>document.getElementById('all-shows').scrollIntoView({behavior:'smooth'}),300); }
-  if (q) {
-    const inp = document.getElementById('nav-search-input');
-    inp.value = q; inp.classList.add('has-value'); filterShows(q);
-    setTimeout(()=>document.getElementById('all-shows').scrollIntoView({behavior:'smooth'}),300);
-  }
 
   markActiveNav();
 })();
