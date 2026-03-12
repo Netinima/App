@@ -143,7 +143,7 @@
 const PAGE = document.body.dataset.page || 'home';
 let PAGE_SHOWS = (function() {
   if (PAGE === 'films')  return SHOW_REGISTRY.filter(s => s.type === 'Film' || s.type === 'Short');
-  if (PAGE === 'shows')  return SHOW_REGISTRY.filter(s => s.type === 'Series');
+  if (PAGE === 'shows')  return SHOW_REGISTRY.filter(s => s.type === 'Series' && !(s.genres||[]).some(g => g.toLowerCase() === 'smp'));
   if (PAGE === 'smp')    return SHOW_REGISTRY.filter(s => (s.genres||[]).some(g => g.toLowerCase() === 'smp'));
   return SHOW_REGISTRY; // home shows everything
 })();
