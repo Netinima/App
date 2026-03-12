@@ -6,16 +6,11 @@
   <title>Netinima – Shows</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ── HERO ── */
     .hero { position:relative; height:92vh; min-height:540px; display:flex; align-items:flex-end; padding:0 6vw 80px; overflow:hidden; }
     .hero-bg-img { position:absolute; inset:0; z-index:0; }
     .hero-bg-img img { width:100%; height:100%; object-fit:cover; display:block; opacity:.55; }
     .hero-fallback { position:absolute; inset:0; background:#0d1520; z-index:0; display:none; }
-    .hero-fallback::before {
-      content:''; position:absolute; bottom:0; left:0; right:0; height:48%;
-      background:linear-gradient(to bottom,#3a6930 0,#3a6930 24px,#5a3a1a 24px,#5a3a1a 120px,#2a2a2a 120px);
-      clip-path:polygon(0% 18%,4% 13%,8% 17%,12% 9%,16% 14%,21% 7%,25% 12%,30% 5%,34% 10%,38% 4%,43% 9%,47% 3%,51% 8%,55% 1%,59% 7%,63% 2%,67% 8%,71% 4%,75% 10%,80% 5%,84% 12%,88% 7%,92% 13%,96% 8%,100% 16%,100% 100%,0% 100%);
-    }
+    .hero-fallback::before { content:''; position:absolute; bottom:0; left:0; right:0; height:48%; background:linear-gradient(to bottom,#3a6930 0,#3a6930 24px,#5a3a1a 24px,#5a3a1a 120px,#2a2a2a 120px); clip-path:polygon(0% 18%,4% 13%,8% 17%,12% 9%,16% 14%,21% 7%,25% 12%,30% 5%,34% 10%,38% 4%,43% 9%,47% 3%,51% 8%,55% 1%,59% 7%,63% 2%,67% 8%,71% 4%,75% 10%,80% 5%,84% 12%,88% 7%,92% 13%,96% 8%,100% 16%,100% 100%,0% 100%); }
     .hero-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(to right,rgba(0,0,0,.88) 38%,transparent 72%),linear-gradient(to top,rgba(0,0,0,.92) 0%,transparent 38%); }
     .hero-content { position:relative; z-index:2; max-width:560px; }
     .hero-badge { display:inline-flex; align-items:center; gap:7px; font-family:var(--fm); font-size:.65rem; color:var(--green); border:1px solid var(--green-dim); padding:4px 11px; border-radius:2px; margin-bottom:16px; letter-spacing:2px; text-transform:uppercase; }
@@ -25,12 +20,10 @@
     .hero-type-series { background:rgba(74,222,128,.1);  color:var(--green); border:1px solid var(--green-dim); }
     .hero-title { font-family:var(--fh); font-size:clamp(3rem,6.5vw,5.5rem); line-height:.93; letter-spacing:2px; color:#fff; text-shadow:4px 4px 0 rgba(0,0,0,.6); margin-bottom:14px; }
     .hero-meta { display:flex; align-items:center; gap:10px; font-size:.82rem; color:var(--muted); margin-bottom:12px; font-weight:600; letter-spacing:1px; flex-wrap:wrap; }
-        .hero-meta .hdot { width:3px; height:3px; background:var(--muted); border-radius:50%; }
+    .hero-meta .hdot { width:3px; height:3px; background:var(--muted); border-radius:50%; }
     .hero-meta .htag { border:1px solid var(--border); padding:2px 7px; border-radius:2px; font-size:.65rem; text-transform:uppercase; }
     .hero-desc { font-size:.92rem; color:#bbb; line-height:1.65; margin-bottom:26px; max-width:400px; font-weight:500; }
     .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
-
-    /* ── EMPTY ── */
     .empty-hero { position:relative; height:60vh; min-height:400px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
     .empty-bg { position:absolute; inset:0; background:#0d1520; }
     .empty-bg::before { content:''; position:absolute; bottom:0; left:0; right:0; height:48%; background:linear-gradient(to bottom,#3a6930 0,#3a6930 24px,#5a3a1a 24px,#5a3a1a 120px,#2a2a2a 120px); clip-path:polygon(0% 18%,4% 13%,8% 17%,12% 9%,16% 14%,21% 7%,25% 12%,30% 5%,34% 10%,38% 4%,43% 9%,47% 3%,51% 8%,55% 1%,59% 7%,63% 2%,67% 8%,71% 4%,75% 10%,80% 5%,84% 12%,88% 7%,92% 13%,96% 8%,100% 16%,100% 100%,0% 100%); }
@@ -39,29 +32,25 @@
     .empty-logo { font-family:var(--fh); font-size:clamp(3.5rem,9vw,7rem); letter-spacing:6px; color:var(--green); text-shadow:0 0 40px rgba(74,222,128,.3); margin-bottom:14px; }
     .empty-logo span { color:var(--gold); }
     .empty-sub { font-size:.85rem; color:var(--muted); font-weight:600; letter-spacing:3px; text-transform:uppercase; font-family:var(--fm); }
-
-    /* ── CATEGORIES ── */
     .categories { display:flex; gap:9px; flex-wrap:wrap; padding:0 4vw; margin-bottom:36px; }
     .cat-pill { padding:7px 16px; background:var(--card); border:1px solid var(--border); border-radius:3px; color:var(--muted); font-size:.74rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all .2s; font-family:var(--fb); }
     .cat-pill:hover { background:#1e1e1e; color:var(--text); }
     .cat-pill.active { background:var(--green); color:#000; border-color:var(--green); }
-    .cat-pill.type-film.active  { background:var(--gold);  border-color:var(--gold); }
-    .cat-pill.type-series.active{ background:var(--green); border-color:var(--green); }
-
-    /* ── SECTIONS ── */
     .section { padding:0 4vw 44px; }
     .section-header { display:flex; align-items:baseline; gap:12px; margin-bottom:16px; }
     .section-title { font-family:var(--fh); font-size:1.3rem; letter-spacing:2px; }
-    .section-tag { font-family:var(--fm); font-size:.62rem; border:1px solid; padding:2px 7px; letter-spacing:2px; text-transform:uppercase; border-radius:2px; }
-    .section-tag-film   { color:var(--gold);  border-color:rgba(245,197,24,.4); }
-    .section-tag-series { color:var(--green); border-color:var(--green-dim); }
-
-    /* ── CARD ROW ── */
-    .card-row { display:flex; gap:13px; overflow-x:auto; padding-bottom:10px; }
-    .card-row::-webkit-scrollbar { height:3px; }
-    .card-row::-webkit-scrollbar-thumb { background:var(--green-dim); }
-
-    /* ── CARDS ── */
+    .shows-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(195px,1fr)); gap:14px; }
+    .stats-bar { display:flex; gap:32px; padding:18px 4vw; margin-bottom:4px; border-bottom:1px solid var(--border); }
+    .stat-num { font-family:var(--fh); font-size:1.8rem; letter-spacing:2px; }
+    .stat-num-total { color:var(--text); }
+    .stat-num-film  { color:var(--gold); }
+    .stat-num-series{ color:var(--green); }
+    .stat-lbl { font-family:var(--fm); font-size:.58rem; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:2px; }
+    .no-shows { padding:48px; text-align:center; border:1px dashed var(--border); border-radius:6px; }
+    .no-shows p { font-family:var(--fm); font-size:.72rem; letter-spacing:1.5px; text-transform:uppercase; line-height:2.2; color:var(--muted); }
+    .no-shows a { color:var(--green); text-decoration:none; }
+    .search-back { font-family:var(--fm); font-size:.65rem; color:var(--muted); letter-spacing:2px; cursor:pointer; background:none; border:1px solid var(--border); padding:5px 11px; border-radius:2px; display:none; transition:all .2s; }
+    .search-back:hover { border-color:var(--green); color:var(--green); }
     .card { flex:0 0 195px; border-radius:4px; overflow:hidden; cursor:pointer; text-decoration:none; display:block; border:1px solid transparent; transition:transform .25s,border-color .25s,box-shadow .25s; position:relative; background:var(--card); }
     .card:hover { transform:scale(1.06) translateY(-4px); border-color:var(--green-dim); box-shadow:0 12px 40px rgba(0,0,0,.6),0 0 20px rgba(74,222,128,.13); z-index:2; }
     .card-thumb { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; background:var(--surface); }
@@ -73,34 +62,12 @@
     .card-info { padding:9px 11px 11px; }
     .card-title { font-size:.85rem; font-weight:700; color:var(--text); margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .card-sub { display:flex; gap:7px; align-items:center; font-size:.7rem; color:var(--muted); font-weight:500; }
-            .card-badge { position:absolute; top:7px; left:7px; font-size:.58rem; font-weight:700; padding:2px 6px; border-radius:2px; letter-spacing:1px; text-transform:uppercase; font-family:var(--fm); }
+    .card-badge { position:absolute; top:7px; left:7px; font-size:.58rem; font-weight:700; padding:2px 6px; border-radius:2px; letter-spacing:1px; text-transform:uppercase; font-family:var(--fm); }
     .badge-new { background:var(--red); color:#fff; }
     .badge-hot { background:var(--gold); color:#000; }
     .card-type-tag { position:absolute; top:7px; right:7px; font-family:var(--fm); font-size:.52rem; padding:2px 5px; border-radius:2px; letter-spacing:1px; text-transform:uppercase; }
     .card-type-film   { background:rgba(245,197,24,.85); color:#000; }
     .card-type-series { background:rgba(74,222,128,.85); color:#000; }
-
-    /* ── GRID ── */
-    .shows-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(195px,1fr)); gap:14px; }
-
-    /* ── STATS BAR ── */
-    .stats-bar { display:flex; gap:32px; padding:18px 4vw; margin-bottom:4px; border-bottom:1px solid var(--border); }
-    .stat-num { font-family:var(--fh); font-size:1.8rem; letter-spacing:2px; }
-    .stat-num-total  { color:var(--text); }
-    .stat-num-film   { color:var(--gold); }
-    .stat-num-series { color:var(--green); }
-    .stat-lbl { font-family:var(--fm); font-size:.58rem; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:2px; }
-
-    /* ── NO SHOWS ── */
-    .no-shows { padding:48px; text-align:center; border:1px dashed var(--border); border-radius:6px; }
-    .no-shows p { font-family:var(--fm); font-size:.72rem; letter-spacing:1.5px; text-transform:uppercase; line-height:2.2; color:var(--muted); }
-    .no-shows a { color:var(--green); text-decoration:none; }
-
-    /* ── SEARCH CLEAR ── */
-    .search-back { font-family:var(--fm); font-size:.65rem; color:var(--muted); letter-spacing:2px; cursor:pointer; background:none; border:1px solid var(--border); padding:5px 11px; border-radius:2px; display:none; transition:all .2s; }
-    .search-back:hover { border-color:var(--green); color:var(--green); }
-
-    /* ── FOOTER ── */
     footer { border-top:1px solid var(--border); padding:36px 5vw 24px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:28px; }
     .footer-logo { font-family:var(--fh); font-size:1.7rem; color:var(--green); letter-spacing:3px; margin-bottom:8px; }
     .footer-logo span { color:var(--gold); }
@@ -123,46 +90,22 @@
     <li><a href="smp.html">SMP</a></li>
   </ul>
   <div class="nav-right">
-    <input class="nav-search" id="nav-search-input" type="text" placeholder="Search shows…"
+    <input class="nav-search" id="nav-search-input" type="text" placeholder="Search Shows…"
       oninput="onSearchInput(this)"
-      onkeydown="if(event.key==='Escape')clearSearch(event)"
-    />
+      onkeydown="if(event.key==='Escape')clearSearch(event)" />
     <div class="nav-avatar">🎮</div>
   </div>
 </nav>
 
 <div id="hero-mount"></div>
 
-<!-- featured category teasers -->
-<section class="section" id="featured-cats" style="display:none">
-  <div class="section-header">
-    <h2 class="section-title">Featured</h2>
-  </div>
-  <div class="card-row" id="row-featured-cats"></div>
-</section>
 <div class="ticker-wrap" id="ticker-wrap" style="display:none"><div class="ticker" id="ticker-inner"></div></div>
-<div class="stats-bar" id="stats-bar" style="display:none"></div>
-<div class="categories" id="cat-bar" style="display:none"></div>
-
-<section class="section" id="section-films" style="display:none">
-  <div class="section-header">
-    <h2 class="section-title">Films</h2>
-    <span class="section-tag section-tag-film">🎬 Films</span>
-  </div>
-  <div class="card-row" id="row-films"></div>
-</section>
-
-<section class="section" id="section-series" style="display:none">
-  <div class="section-header">
-    <h2 class="section-title">Series</h2>
-    <span class="section-tag section-tag-series">📺 Series</span>
-  </div>
-  <div class="card-row" id="row-series"></div>
-</section>
+<div class="stats-bar"  id="stats-bar"  style="display:none"></div>
+<div class="categories" id="cat-bar"    style="display:none"></div>
 
 <section class="section" id="all-shows">
   <div class="section-header" style="justify-content:space-between;align-items:center">
-    <h2 class="section-title" id="grid-title">All Shows</h2>
+    <h2 class="section-title" id="grid-title">All Series</h2>
     <button class="search-back" id="search-back" onclick="clearSearch(event)">✕ Clear Search</button>
   </div>
   <div id="grid-wrap"></div>
@@ -184,7 +127,6 @@
     <h4>Community</h4>
     <a href="https://forms.gle/u8sR4SW6UH8DXyA67" target="_blank" rel="noopener">Submit Your Machinima</a>
     <a href="#">Discord Server</a>
-    <a href="#">Awards</a>
   </div>
   <div class="footer-bottom">
     <p id="footer-copy">© 2026 Netinima · Not affiliated with Mojang or Microsoft</p>
@@ -195,6 +137,17 @@
 <script src="shows.js"></script>
 <script src="search.js"></script>
 <script>
+// ── Compute this page's dataset once ──
+// Each page uses data-page on <body> to declare what it shows.
+// All functions below operate on PAGE_SHOWS, never raw SHOW_REGISTRY.
+const PAGE = document.body.dataset.page || 'home';
+let PAGE_SHOWS = (function() {
+  if (PAGE === 'films')  return SHOW_REGISTRY.filter(s => s.type === 'Film' || s.type === 'Short');
+  if (PAGE === 'shows')  return SHOW_REGISTRY.filter(s => s.type === 'Series');
+  if (PAGE === 'smp')    return SHOW_REGISTRY.filter(s => (s.genres||[]).some(g => g.toLowerCase() === 'smp'));
+  return SHOW_REGISTRY; // home shows everything
+})();
+
 function buildCard(s) {
   const isFilm = s.type === 'Film' || s.type === 'Short';
   const a = document.createElement('a');
@@ -218,7 +171,7 @@ function buildHero(shows) {
   const mount = document.getElementById('hero-mount');
   const show = shows.find(s => s.featured) || shows[0] || null;
   if (!show) {
-    mount.innerHTML = `<div class="empty-hero"><div class="empty-bg"></div><div class="empty-bg-overlay"></div><div class="empty-content"><div class="empty-logo">NET<span>INIMA</span></div><p class="empty-sub">Add your first show to get started</p></div></div>`;
+    mount.innerHTML = `<div class="empty-hero"><div class="empty-bg"></div><div class="empty-bg-overlay"></div><div class="empty-content"><div class="empty-logo">NET<span>INIMA</span></div><p class="empty-sub">Nothing here yet</p></div></div>`;
     return;
   }
   const isFilm = show.type === 'Film' || show.type === 'Short';
@@ -261,123 +214,128 @@ function buildStats(shows) {
   if (shows.length < 2) return;
   const bar = document.getElementById('stats-bar');
   bar.style.display = 'flex';
-  const films = shows.filter(s=>s.type==='Film'||s.type==='Short').length;
-  const series = shows.filter(s=>s.type==='Series').length;
-  bar.innerHTML = [
-    ['stat-num-total', shows.length,'Total'],
-    ['stat-num-film',  films,       'Films'],
-    ['stat-num-series',series,      'Series'],
-  ].map(([cls,n,l])=>`<div><div class="stat-num ${cls}">${n}</div><div class="stat-lbl">${l}</div></div>`).join('');
+  // On home: show films + series counts. On category pages: just show count of that category.
+  if (PAGE === 'home') {
+    const films  = shows.filter(s=>s.type==='Film'||s.type==='Short').length;
+    const series = shows.filter(s=>s.type==='Series').length;
+    bar.innerHTML = [
+      ['stat-num-total', shows.length, 'Total'],
+      ['stat-num-film',  films,        'Films'],
+      ['stat-num-series',series,       'Series'],
+    ].map(([cls,n,l])=>`<div><div class="stat-num ${cls}">${n}</div><div class="stat-lbl">${l}</div></div>`).join('');
+  } else {
+    const labels = { films:'Films', shows:'Series', smp:'SMP', home:'Total' };
+    const numClass = PAGE==='films' ? 'stat-num-film' : 'stat-num-series';
+    bar.innerHTML = `<div><div class="stat-num ${numClass}">${shows.length}</div><div class="stat-lbl">${labels[PAGE]||'Total'}</div></div>`;
+  }
 }
 
 function buildCategories(shows) {
-  if (shows.length < 2) return;
+  // Only build genre pills — no Films/Series switcher on category pages
   const bar = document.getElementById('cat-bar');
-  bar.style.display = 'flex';
-  bar.innerHTML = `
-    <button class="cat-pill active" data-filter="All" onclick="filterGenre('All',this)">All</button>
-    <button class="cat-pill type-film" data-filter="__films" onclick="filterGenre('__films',this)">🎬 Films</button>
-    <button class="cat-pill type-series" data-filter="__series" onclick="filterGenre('__series',this)">📺 Series</button>`;
+  if (!bar) return;
   const genres = new Set(shows.flatMap(s=>s.genres||[]));
+  if (!genres.size) return;
+  bar.style.display = 'flex';
+
+  // On home page include the page-switcher pills too
+  if (PAGE === 'home') {
+    bar.innerHTML = `
+      <button class="cat-pill active" data-filter="All" onclick="filterCat('All',this)">All</button>
+      <button class="cat-pill type-film" data-filter="__films" onclick="filterCat('__films',this)">🎬 Films</button>
+      <button class="cat-pill type-series" data-filter="__series" onclick="filterCat('__series',this)">📺 Series</button>`;
+  } else {
+    bar.innerHTML = `<button class="cat-pill active" data-filter="All" onclick="filterCat('All',this)">All</button>`;
+  }
+
   genres.forEach(g => {
     const btn = document.createElement('button');
     btn.className = 'cat-pill';
     btn.textContent = g;
     btn.dataset.filter = g;
-    btn.onclick = ()=>filterGenre(g,btn);
+    btn.onclick = () => filterCat(g, btn);
     bar.appendChild(btn);
   });
 }
 
-function buildRows(shows) {
-  const films = shows.filter(s=>s.type==='Film'||s.type==='Short');
+// Home-only: a horizontal scroll row per category
+function buildHomeRows(shows) {
+  if (PAGE !== 'home') return;
+  const films  = shows.filter(s=>s.type==='Film'||s.type==='Short');
   const series = shows.filter(s=>s.type==='Series');
-  if (films.length) {
-    document.getElementById('section-films').style.display = 'block';
-    const row = document.getElementById('row-films');
+  const smps   = shows.filter(s=>(s.genres||[]).some(g=>g.toLowerCase()==='smp'));
+
+  function fillRow(secId, rowId, items) {
+    if (!items.length) return;
+    document.getElementById(secId).style.display = 'block';
+    const row = document.getElementById(rowId);
     row.innerHTML = '';
-    films.forEach(s=>row.appendChild(buildCard(s)));
+    items.forEach(s => row.appendChild(buildCard(s)));
   }
-  if (series.length) {
-    document.getElementById('section-series').style.display = 'block';
-    const row = document.getElementById('row-series');
-    row.innerHTML = '';
-    series.forEach(s=>row.appendChild(buildCard(s)));
-  }
+  fillRow('section-films',  'row-films',  films);
+  fillRow('section-series', 'row-series', series);
+  fillRow('section-smp',    'row-smp',    smps);
 }
 
 function buildGrid(shows, isSearch=false) {
-  const wrap = document.getElementById('grid-wrap');
+  const wrap  = document.getElementById('grid-wrap');
   const title = document.getElementById('grid-title');
-  const back = document.getElementById('search-back');
+  const back  = document.getElementById('search-back');
   wrap.innerHTML = '';
   if (!isSearch) {
-    const page = document.body.dataset.page || 'home';
-    let label;
-    if (page==='films') label = shows.length>1?`All Films (${shows.length})`:'All Films';
-    else if (page==='smp')  label = shows.length>1?`All SMP (${shows.length})`:'All SMP';
-    else label = shows.length>1?`All Shows (${shows.length})`:'All Shows';
-    title.textContent = label;
-    back.style.display='none';
+    const labels = { films:'All Films', shows:'All Series', smp:'All SMP', home:'All Shows' };
+    const base = labels[PAGE] || 'All Shows';
+    title.textContent = shows.length > 1 ? `${base} (${shows.length})` : base;
+    back.style.display = 'none';
+  } else {
+    back.style.display = 'inline';
   }
-  else { back.style.display='inline'; }
-  if (!shows.length && isSearch) { wrap.innerHTML=`<div class="no-shows"><p>No shows matched your search.</p></div>`; return; }
-  if (!shows.length) { wrap.innerHTML=`<div class="no-shows"><p>No shows yet.</p><p>Use TEMPLATE-film.html or TEMPLATE-series.html,<br>then add it to shows.js.</p></div>`; return; }
+  if (!shows.length && isSearch) { wrap.innerHTML=`<div class="no-shows"><p>No results matched your search.</p></div>`; return; }
+  if (!shows.length)             { wrap.innerHTML=`<div class="no-shows"><p>Nothing here yet.</p></div>`; return; }
   const grid = document.createElement('div');
   grid.className = 'shows-grid';
-  shows.forEach(s=>grid.appendChild(buildCard(s)));
+  shows.forEach(s => grid.appendChild(buildCard(s)));
   wrap.appendChild(grid);
 }
 
-function filterGenre(filter, btn) {
-  // clear any active pill
+// Genre / type filter — scoped to PAGE_SHOWS
+function filterCat(filter, btn) {
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
-
-  // clear nav link highlight and optionally re-highlight if this filter matches a nav item
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  const navLink = [...document.querySelectorAll('.nav-links a')].find(a=>a.getAttribute('onclick')?.includes(`'${filter}'`));
-  if (navLink) navLink.classList.add('active');
-
-  // if caller didn't supply a button, try to look one up by data-filter
-  if (!btn) {
-    btn = document.querySelector(`.cat-pill[data-filter="${filter}"]`);
-  }
+  if (!btn) btn = document.querySelector(`.cat-pill[data-filter="${filter}"]`);
   if (btn) btn.classList.add('active');
 
   let r;
-  if (filter==='All')        r = SHOW_REGISTRY;
-  else if (filter==='__films')   r = SHOW_REGISTRY.filter(s=>s.type==='Film'||s.type==='Short');
-  else if (filter==='__series')  r = SHOW_REGISTRY.filter(s=>s.type==='Series');
-  else r = SHOW_REGISTRY.filter(s=>(s.genres||[]).includes(filter));
+  if (filter==='All')         r = PAGE_SHOWS;
+  else if (filter==='__films')  r = PAGE_SHOWS.filter(s=>s.type==='Film'||s.type==='Short');
+  else if (filter==='__series') r = PAGE_SHOWS.filter(s=>s.type==='Series');
+  else r = PAGE_SHOWS.filter(s=>(s.genres||[]).includes(filter));
   buildGrid(r);
 
-  // update URL to reflect current genre filter (remove search term)
   const url = new URL(window.location);
-  if (filter && filter !== 'All') url.searchParams.set('genre', filter);
-  else url.searchParams.delete('genre');
+  filter !== 'All' ? url.searchParams.set('genre', filter) : url.searchParams.delete('genre');
   url.searchParams.delete('q');
   window.history.replaceState({},'',url);
 }
 
+// Search — scoped to PAGE_SHOWS
 function onSearchInput(input) {
-  input.classList.toggle('has-value', input.value.length>0);
+  input.classList.toggle('has-value', input.value.length > 0);
   filterShows(input.value);
 }
 
 function filterShows(q) {
   q = q.toLowerCase().trim();
-  const results = !q ? SHOW_REGISTRY : SHOW_REGISTRY.filter(s=>
+  const results = !q ? PAGE_SHOWS : PAGE_SHOWS.filter(s=>
     s.title.toLowerCase().includes(q)||
     (s.genres||[]).some(g=>g.toLowerCase().includes(q))||
     s.type.toLowerCase().includes(q)||
     s.year.includes(q)
   );
-  if (q) document.getElementById('grid-title').innerHTML=`Search: "<span style="color:var(--green)">${q}</span>" <span style="font-size:.8rem;color:var(--muted);font-family:var(--fm)">(${results.length} found)</span>`;
-  buildGrid(results, q!=='');
-
+  if (q) document.getElementById('grid-title').innerHTML =
+    `Search: "<span style="color:var(--green)">${q}</span>" <span style="font-size:.8rem;color:var(--muted);font-family:var(--fm)">(${results.length} found)</span>`;
+  buildGrid(results, q !== '');
   const url = new URL(window.location);
-  if (q) url.searchParams.set('q',q); else url.searchParams.delete('q');
-  // clear any genre filter when performing a text search
+  q ? url.searchParams.set('q',q) : url.searchParams.delete('q');
   if (q) url.searchParams.delete('genre');
   window.history.replaceState({},'',url);
 }
@@ -387,90 +345,83 @@ function clearSearch(e) {
   const inp = document.getElementById('nav-search-input');
   inp.value=''; inp.classList.remove('has-value');
   filterShows('');
-  // preserve any existing genre filter when clearing search
   const url = new URL(window.location);
   url.searchParams.delete('q');
   window.history.replaceState({},'',url);
 }
 
-(function init(){
-  let shows = SHOW_REGISTRY;
-  const page = document.body.dataset.page || 'home';
-  if (page === 'films') {
-    shows = shows.filter(s=>s.type==='Film'||s.type==='Short');
-  } else if (page === 'shows') {
-    // all shows, no additional filtering
-  } else if (page === 'smp') {
-    shows = shows.filter(s=>(s.genres||[]).includes('SMP'));
-  }
+// Home-only: Featured section with one card linking to each category page
+function buildFeaturedSection() {
+  const section = document.getElementById('featured-cats');
+  if (!section) return;
+  if (PAGE !== 'home') { section.style.display='none'; return; }
 
-  buildHero(shows);
-  buildCategoryHeroes(SHOW_REGISTRY); // always build teasers using full list on home page; harmless elsewhere
-  if(shows.length>=2) buildTicker(shows);
-  buildStats(shows);
-  buildCategories(shows);
-  buildRows(shows);
-  buildGrid(shows);
-  const yr = shows.length ? Math.max(...shows.map(s=>parseInt(s.year)||2026)) : new Date().getFullYear();
-  document.getElementById('footer-copy').textContent=`© ${yr} Netinima · Not affiliated with Mojang or Microsoft`;
+  const cats = [
+    { label:'Films',  emoji:'🎬', filter: s=>s.type==='Film'||s.type==='Short', href:'films.html' },
+    { label:'Shows',  emoji:'📺', filter: s=>s.type==='Series',                  href:'shows.html' },
+    { label:'SMP',    emoji:'⚔️', filter: s=>(s.genres||[]).some(g=>g.toLowerCase()==='smp'), href:'smp.html' },
+  ];
+
+  const container = document.getElementById('row-featured-cats');
+  if (!container) return;
+  container.innerHTML = '';
+  let anyShown = false;
+
+  cats.forEach(c => {
+    const list = SHOW_REGISTRY.filter(c.filter);
+    if (!list.length) return;
+    anyShown = true;
+    const show = list.find(s=>s.featured) || list[0];
+    const card = buildCard(show);
+    card.href = c.href;
+    // Add a category label overlay
+    const lbl = document.createElement('div');
+    lbl.style.cssText = 'position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:20px 10px 9px;font-family:var(--fm);font-size:.6rem;letter-spacing:2px;color:#fff;text-transform:uppercase;pointer-events:none;';
+    lbl.textContent = c.emoji + ' ' + c.label + ' →';
+    card.querySelector('.card-thumb').appendChild(lbl);
+    container.appendChild(card);
+  });
+
+  section.style.display = anyShown ? 'block' : 'none';
+}
+
+function markActiveNav() {
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.remove('active');
+    const href = a.getAttribute('href')||'';
+    if (PAGE==='home'  && (href.endsWith('index.html') || href==='./')) a.classList.add('active');
+    if (PAGE==='films' && href.endsWith('films.html'))  a.classList.add('active');
+    if (PAGE==='shows' && href.endsWith('shows.html'))  a.classList.add('active');
+    if (PAGE==='smp'   && href.endsWith('smp.html'))    a.classList.add('active');
+  });
+}
+
+(function init(){
+  buildHero(PAGE_SHOWS);
+  buildFeaturedSection();
+  if (PAGE_SHOWS.length >= 2) buildTicker(PAGE_SHOWS);
+  buildStats(PAGE_SHOWS);
+  buildCategories(PAGE_SHOWS);
+  buildHomeRows(PAGE_SHOWS);
+  buildGrid(PAGE_SHOWS);
+
+  const yr = PAGE_SHOWS.length ? Math.max(...PAGE_SHOWS.map(s=>parseInt(s.year)||2026)) : new Date().getFullYear();
+  document.getElementById('footer-copy').textContent = `© ${yr} Netinima · Not affiliated with Mojang or Microsoft`;
 
   const params = new URLSearchParams(window.location.search);
-  const q = params.get('q');
+  const q     = params.get('q');
   const genre = params.get('genre');
-
-  if (genre) {
-    // apply genre filter if present (search takes precedence)
-    filterGenre(genre);
+  if (genre) { filterCat(genre); setTimeout(()=>document.getElementById('all-shows').scrollIntoView({behavior:'smooth'}),300); }
+  if (q) {
+    const inp = document.getElementById('nav-search-input');
+    inp.value = q; inp.classList.add('has-value'); filterShows(q);
     setTimeout(()=>document.getElementById('all-shows').scrollIntoView({behavior:'smooth'}),300);
-  }
-  if(q){ 
-    const inp=document.getElementById('nav-search-input'); inp.value=q; inp.classList.add('has-value'); filterShows(q);
-    setTimeout(()=>document.getElementById('all-shows').scrollIntoView({behavior:'smooth'}),300); 
   }
 
   markActiveNav();
 })();
 
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40));
-
-// navigation helpers
-// mark the active nav link based on page attribute
-function markActiveNav() {
-  const page = document.body.dataset.page || 'home';
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.classList.remove('active');
-    const href = a.getAttribute('href')||'';
-    if (page==='home' && href.endsWith('index.html')) a.classList.add('active');
-    if (page==='films' && href.endsWith('films.html')) a.classList.add('active');
-    if (page==='shows' && href.endsWith('shows.html')) a.classList.add('active');
-    if (page==='smp' && href.endsWith('smp.html')) a.classList.add('active');
-  });
-}
-
-// show a teaser card for each major category on the homepage
-function buildCategoryHeroes(shows) {
-  const section = document.getElementById('featured-cats');
-  if (document.body.dataset.page !== 'home') {
-    if (section) section.style.display = 'none';
-    return;
-  }
-  const container = document.getElementById('row-featured-cats');
-  if (!container) return;
-  container.innerHTML = '';
-  const cats = [
-    {filter: s=>s.type==='Film'||s.type==='Short', href:'films.html'},
-    {filter: s=>s.type==='Series', href:'shows.html'},
-    {filter: s=>(s.genres||[]).includes('SMP'), href:'smp.html'}
-  ];
-  cats.forEach(c=>{
-    const list = shows.filter(c.filter);
-    if (!list.length) return;
-    const show = list.find(s=>s.featured) || list[0];
-    const card = buildCard(show);
-    card.href = c.href;
-    container.appendChild(card);
-  });
-}
+window.addEventListener('scroll', ()=>document.getElementById('nav').classList.toggle('scrolled', window.scrollY>40));
 </script>
 </body>
 </html>

@@ -133,3 +133,11 @@ footer {
 /* ── SEARCH ── */
 .nav-search.has-value { border-bottom-color: var(--green); }
 .nav-right { position: relative; }
+
+/* ── SMP TYPE TAG & HERO BADGE ── */
+.card-type-smp { background: rgba(99,102,241,.85); color: #fff; }
+.hero-type-smp { background: rgba(99,102,241,.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,.4); }
+.stat-num-smp  { color: #a5b4fc; }
+
+/* ── NAV ACTIVE ── */
+.nav-links a.active { color: var(--green); border-bottom: 2px solid var(--green); padding-bottom: 2px; }
